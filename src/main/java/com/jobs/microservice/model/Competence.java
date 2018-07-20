@@ -1,11 +1,6 @@
 package com.jobs.microservice.model;
 
-import javax.persistence.Entity;
-
-import javax.persistence.GeneratedValue;
-
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 
 @Entity
@@ -16,6 +11,7 @@ public class Competence{
     private String nomCompetence;
     private int niveau;
     @ManyToOne
+    @JoinColumn(name = "fk_cv") //optionnel
     private Cv cv;
 
     public Competence() {

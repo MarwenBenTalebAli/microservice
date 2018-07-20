@@ -1,6 +1,7 @@
 package com.jobs.microservice.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.jobs.microservice.dao.CvDao;
 import com.jobs.microservice.model.Cv;
@@ -19,12 +20,22 @@ public class CvServiceImpl implements CvService {
     }
 
 	@Override
-	public Cv findById(Long idCv) {
-		return (Cv) cvDao.getOne(idCv);
+	public Optional<Cv> findById(Long idCv) {
+		return cvDao.findById(idCv);
 	}
 
 	@Override
 	public List<Cv> findAll() {
-		return (List<Cv>) cvDao.findAll();
+		return cvDao.findAll();
+	}
+
+	@Override
+	public List<Cv> findByCandidat() {
+		return null;
+	}
+
+	@Override
+	public Cv save(Cv cv) {
+    	return cvDao.save(cv);
 	}
 }

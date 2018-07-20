@@ -1,11 +1,9 @@
 package com.jobs.microservice.model;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Candidat {
@@ -15,10 +13,40 @@ public class Candidat {
     private String nom;
     private String prenom;
     private int age;
-    @OneToMany
+    @OneToMany(mappedBy = "candidat")
     private Collection<Cv> cvs;
-    @OneToMany
+
+    public Collection<Cv> getCvs() {
+        return cvs;
+    }
+
+    public void setCvs(Collection<Cv> cvs) {
+        this.cvs = cvs;
+    }
+
+    @OneToMany(mappedBy = "candidat")
     private Collection<LettreMotivation> lettreMotivations;
+
+    @Column
+    private LocalDateTime dateAjout;
+    @Column
+    private LocalDateTime dateModification;
+
+    public LocalDateTime getDateAjout() {
+        return dateAjout;
+    }
+
+    public void setDateAjout(LocalDateTime dateAjout) {
+        this.dateAjout = dateAjout;
+    }
+
+    public LocalDateTime getDateModification() {
+        return dateModification;
+    }
+
+    public void setDateModification(LocalDateTime dateModification) {
+        this.dateModification = dateModification;
+    }
 
     public Candidat() {
     }
@@ -61,13 +89,7 @@ public class Candidat {
         this.age = age;
     }
 
-    public Collection<Cv> getCvs() {
-        return cvs;
-    }
 
-    public void setCvs(Collection<Cv> cvs) {
-        this.cvs = cvs;
-    }
 
     public Collection<LettreMotivation> getLettreMotivations() {
         return lettreMotivations;
@@ -76,4 +98,15 @@ public class Candidat {
     public void setLettreMotivations(Collection<LettreMotivation> lettreMotivations) {
         this.lettreMotivations = lettreMotivations;
     }
+
+    public void addCvs(Cv cv){
+        this.cvs.add(cv);
+        cv.setCandidat(this);
+    }
+
+    public void addLettreMotivations(LettreMotivation lettreMotivation){
+        this.lettreMotivations.add(lettreMotivation);
+        lettreMotivation.setCandidat(this);
+    }
+
 }

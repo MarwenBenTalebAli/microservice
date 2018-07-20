@@ -16,7 +16,8 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.jobs.microservice.web"))
-                .paths(PathSelectors.regex("/candidats.*"))
+                //.paths(PathSelectors.regex("/candidats.*"))
+                .paths(PathSelectors.any())
                 .build();
     }
 }
