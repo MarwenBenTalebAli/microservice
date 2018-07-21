@@ -1,12 +1,13 @@
 package com.jobs.microservice.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 
 @Entity
-public class FormationPro{
+public class FormationPro implements Serializable {
     @Id
     @GeneratedValue
     private Long idFormationPro;
@@ -21,6 +22,17 @@ public class FormationPro{
     @Column
     private
     Duration duree;
+    @OneToOne
+    @JoinColumn(name = "fk_adresse")
+    private Adresse adresse;
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
 
     public Duration getDuree() {
         return duree;
@@ -33,10 +45,11 @@ public class FormationPro{
     public FormationPro() {
     }
 
-    public FormationPro(String nomFormationPro, LocalDateTime dateDebut, LocalDateTime dateFin) {
+    public FormationPro(String nomFormationPro, LocalDateTime dateDebut, LocalDateTime dateFin, Adresse adresse) {
         this.nomFormationPro = nomFormationPro;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+        this.adresse = adresse;
     }
 
     public Long getIdFormationPro() {

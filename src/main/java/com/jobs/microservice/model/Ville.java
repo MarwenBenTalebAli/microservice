@@ -1,35 +1,34 @@
 package com.jobs.microservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
-public class Ville {
+public class Ville implements Serializable {
     @Id
     @GeneratedValue
     private Long idVille;
-    private String nom;
+    private String nomVille;
     private int codePostal;
     @ManyToOne
+    @JoinColumn(name = "fk_region")
     private Region region;
 
     public Ville() {
     }
 
-    public Ville(String nom, int codePostal) {
-        this.nom = nom;
+    public Ville(String nomVille, int codePostal) {
+        this.nomVille = nomVille;
         this.codePostal = codePostal;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomVille() {
+        return nomVille;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomVille(String nomVille) {
+        this.nomVille = nomVille;
     }
 
     public int getCodePostal() {

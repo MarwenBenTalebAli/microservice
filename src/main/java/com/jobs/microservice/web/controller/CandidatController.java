@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-@Api( description="API pour es opérations CRUD sur les candidats.")
+@Api( description="API pour les opérations CRUD sur les candidats.")
 @RestController
 public class CandidatController {
 

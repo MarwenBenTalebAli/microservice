@@ -1,10 +1,11 @@
 package com.jobs.microservice.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
-public class Competence{
+public class Competence implements Serializable {
     @Id
     @GeneratedValue
     private Long idCompetence;

@@ -5,11 +5,12 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
 @Entity
-public class LettreMotivation {
+public class LettreMotivation implements Serializable {
 
     @Id
     @GeneratedValue

@@ -1,18 +1,25 @@
 package com.jobs.microservice.model;
 
-import javax.persistence.Entity;
-
-import javax.persistence.GeneratedValue;
-
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Adresse {
+public class Adresse implements Serializable {
     @Id
     @GeneratedValue
     private Long idAdresse;
     private int numRue;
     private String rue;
+
+    @OneToOne
+    @JoinColumn(name = "fk_pays")
+    private Pays pays;
+    @OneToOne
+    @JoinColumn(name = "fk_region")
+    private Region region;
+    @OneToOne
+    @JoinColumn(name = "fk_ville")
+    private Ville ville;
 
 
     public String getRue() {

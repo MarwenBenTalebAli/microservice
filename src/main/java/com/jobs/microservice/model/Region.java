@@ -1,25 +1,33 @@
 package com.jobs.microservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+import java.io.Serializable;
 import java.util.Set;
 
 
 @Entity
-public class Region {
+public class Region implements Serializable {
     @Id
     @GeneratedValue
     private Long idRegion;
     private String nomRegion;
-
     @ManyToOne
+    @JoinColumn(name = "fk_pays")
     private Pays pays;
     @OneToMany(mappedBy = "region")
     private Set<Ville> villes;
+
+    public Pays getPays() {
+        return pays;
+    }
+
+    public void setPays(Pays pays) {
+        this.pays = pays;
+    }
+
+    public Region() {
+    }
 
     public String getNomRegion() {
         return nomRegion;

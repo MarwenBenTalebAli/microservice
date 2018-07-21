@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 
-@Api( description="API pour es opérations CRUD sur les cvs.")
+@Api( description="API pour les opérations CRUD sur les cvs.")
 @RestController
 public class CvController {
 

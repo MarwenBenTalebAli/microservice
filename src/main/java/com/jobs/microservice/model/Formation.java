@@ -1,5 +1,6 @@
 package com.jobs.microservice.model;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -7,13 +8,14 @@ import javax.persistence.*;
 
 
 @Entity
-public class Formation{
+public class Formation implements Serializable {
 
     @Id
     @GeneratedValue
     private Long idFormation;
     private String nomFormation;
     @OneToOne
+    @JoinColumn(name = "fk_adresse")
     private Adresse adresse;
     @ManyToOne
     @JoinColumn(name = "fk_cv") //optionnel

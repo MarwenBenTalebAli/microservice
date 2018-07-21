@@ -2,6 +2,7 @@ package com.jobs.microservice.model;
 
 import org.hibernate.validator.constraints.Length;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-public class Cv {
+public class Cv implements Serializable {
 
     @Id
     @GeneratedValue
