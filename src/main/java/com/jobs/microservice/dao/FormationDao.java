@@ -1,11 +1,13 @@
 package com.jobs.microservice.dao;
 
-import com.jobs.microservice.model.Candidat;
 import com.jobs.microservice.model.Cv;
+import com.jobs.microservice.model.Formation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface CvDao extends JpaRepository<Cv, Long> {
-    Cv findByCandidat(Candidat candidat);
+public interface FormationDao extends JpaRepository<Formation, Long> {
+    List<Formation> findByCv(Cv cv);
 }

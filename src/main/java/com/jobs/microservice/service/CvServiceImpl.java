@@ -38,4 +38,9 @@ public class CvServiceImpl implements CvService {
 	public Cv save(Cv cv) {
     	return cvDao.save(cv);
 	}
+
+	@Override
+	public void delete(Long idCv) {
+		cvDao.deleteById(idCv);
+	}
 }

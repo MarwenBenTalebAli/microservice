@@ -9,4 +9,5 @@ public interface LettreMotivationService {
     Optional<LettreMotivation> findById(Long idLettreMotivation);
     List<LettreMotivation> findAll();
     LettreMotivation save(LettreMotivation lettreMotivation);
+    void delete(Long idLettreMotivation);
 }

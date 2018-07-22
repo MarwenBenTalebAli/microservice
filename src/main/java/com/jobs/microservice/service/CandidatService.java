@@ -9,4 +9,5 @@ public interface CandidatService {
     Optional<Candidat> findById(Long idCandidat);
     List<Candidat> findAll();
     Candidat save(Candidat candidat);
+    void delete(Long idCandidat);
 }

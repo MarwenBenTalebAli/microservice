@@ -32,4 +32,9 @@ public class LettreMotivationServiceImpl implements LettreMotivationService {
     public LettreMotivation save(LettreMotivation lettreMotivation) {
         return lettreMotivationDao.save(lettreMotivation);
     }
+
+    @Override
+    public void delete(Long idLettreMotivation) {
+        lettreMotivationDao.deleteById(idLettreMotivation);
+    }
 }

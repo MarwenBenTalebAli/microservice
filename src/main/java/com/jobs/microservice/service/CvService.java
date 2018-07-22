@@ -10,4 +10,5 @@ public interface CvService {
     List<Cv> findAll();
     List<Cv> findByCandidat();
     Cv save(Cv cv);
+    void delete(Long idCv);
 }

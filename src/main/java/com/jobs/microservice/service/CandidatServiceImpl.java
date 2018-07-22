@@ -33,4 +33,9 @@ public class CandidatServiceImpl implements CandidatService {
     public Candidat save(Candidat candidat) {
         return candidatDao.save(candidat);
     }
+
+    @Override
+    public void delete(Long idCandidat) {
+        candidatDao.deleteById(idCandidat);
+    }
 }

@@ -31,7 +31,6 @@ public class CvController {
         this.candidatServiceImpl = candidatServiceImpl;
     }
 
-    // Ajouter un cv
     @ApiOperation(value = "Ajouter un cv.")
     @PostMapping(value = "/cvs")
     public ResponseEntity<Void> addCv(@RequestBody Cv cv) {
@@ -52,7 +51,6 @@ public class CvController {
 
     }
 
-    //Récuperer un cv par l'id de candidat
     @ApiOperation(value = "Récupère la liste des cvs grâce à L'ID de candidat à condition que celui-ci soit en base de donnée!")
     @PostMapping(value = "/cvs/{idCandidat}")
     public Collection<Cv> getListeCvByIdCandidat(@PathVariable Long idCandidat) {
@@ -66,7 +64,6 @@ public class CvController {
 
     }
 
-    //Récuperer un cv par son id
     @ApiOperation(value = "Récupère un cv grâce à son ID à condition que celui-ci soit en base de donnée!")
     @GetMapping(value = "/cvs/{idCv}")
     public Optional<Cv> getCvById(@PathVariable Long idCv) {
@@ -77,5 +74,17 @@ public class CvController {
             throw new CvNotFoundException("Le cv correspondant à l'id " + idCv + " n'existe pas");
 
         return cv;
+    }
+
+    @ApiOperation(value = "Supprimer un cv grâce à son ID à condition que celui-ci soit en base de donnée!")
+    @DeleteMapping (value = "/cvs/{idCv}")
+    public void supprimerCv(@PathVariable Long idCv) {
+        cvServiceImpl.delete(idCv);
+    }
+
+    @ApiOperation(value = "Modifier un cv excepté que le cv passé en paramètre a le même Id qu'un cv existant")
+    @PutMapping (value = "/Cvs")
+    public void updateCv(@RequestBody Cv cv) {
+        cvServiceImpl.save(cv);
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.jobs.microservice.model.Candidat;
+import com.jobs.microservice.model.Formation;
 import com.jobs.microservice.model.LettreMotivation;
 import com.jobs.microservice.service.CandidatServiceImpl;
 import com.jobs.microservice.service.LettreMotivationServiceImpl;
@@ -35,7 +36,7 @@ public class LettreMotivationController {
     // Ajouter un candidat
     @ApiOperation(value = "Ajouter une lettre de motivation.")
     @PostMapping(value = "/lettres")
-    public ResponseEntity<Void> addLttreMotivation(@RequestBody LettreMotivation lettreMotivation) {
+    public ResponseEntity<Void> addLettreMotivation(@RequestBody LettreMotivation lettreMotivation) {
 
         LettreMotivation lettreMotivation1 = lettreMotivationServiceImpl.save(lettreMotivation);
 
@@ -53,7 +54,6 @@ public class LettreMotivationController {
 
     }
 
-    // Affiche la liste de tous les lettres disponibles
     @ApiOperation(value = "Affiche la liste de tous les lettres disponibles à condition qu'ils sont en base de donnée!")
     @GetMapping(value = "/lettres")
     public List<LettreMotivation> getLettres() {
@@ -66,7 +66,6 @@ public class LettreMotivationController {
 
     }
 
-    //Récuperer un candidat par son id
     @ApiOperation(value = "Récupère les lettres de motivation d'un candidat grâce à son ID à condition que celui-ci soit en base de donnée!")
     @GetMapping(value = "/lettres/{idCandidat}")
     public Collection<LettreMotivation> getLettresByIdCandidat(@PathVariable Long idCandidat) {
@@ -77,5 +76,17 @@ public class LettreMotivationController {
             throw new CandidatNotFoundException("Le candidat correspondant à l'id " + idCandidat + " n'existe pas");
 
         return candidat.get().getLettreMotivations();
+    }
+
+    @ApiOperation(value = "Supprimer une lettre de motivation grâce à son ID à condition que celle-ci soit en base de donnée!")
+    @DeleteMapping(value = "/lettres/{idLettreMotivation}")
+    public void supprimerLettreMotivation(@PathVariable Long idLettreMotivation) {
+        lettreMotivationServiceImpl.delete(idLettreMotivation);
+    }
+
+    @ApiOperation(value = "Modifier une lettre de motivation excepté que la lettre passé en paramètre a le même Id qu'une lettre existant")
+    @PutMapping(value = "/lettres")
+    public void updateLettreMotivation(@RequestBody LettreMotivation lettreMotivation) {
+        lettreMotivationServiceImpl.save(lettreMotivation);
     }
 }
