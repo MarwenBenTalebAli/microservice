@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 
-@Api( description="API pour les opérations CRUD sur les cvs.")
+@Api(description = "API pour les opérations CRUD sur les cvs.")
 @RestController
 public class CvController {
 
@@ -77,13 +77,13 @@ public class CvController {
     }
 
     @ApiOperation(value = "Supprimer un cv grâce à son ID à condition que celui-ci soit en base de donnée!")
-    @DeleteMapping (value = "/cvs/{idCv}")
+    @DeleteMapping(value = "/cvs/{idCv}")
     public void supprimerCv(@PathVariable Long idCv) {
         cvServiceImpl.delete(idCv);
     }
 
     @ApiOperation(value = "Modifier un cv excepté que le cv passé en paramètre a le même Id qu'un cv existant")
-    @PutMapping (value = "/Cvs")
+    @PutMapping(value = "/Cvs")
     public void updateCv(@RequestBody Cv cv) {
         cvServiceImpl.save(cv);
     }

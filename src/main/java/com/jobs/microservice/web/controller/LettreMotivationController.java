@@ -1,17 +1,10 @@
 package com.jobs.microservice.web.controller;
 
-import java.net.URI;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-
 import com.jobs.microservice.model.Candidat;
-import com.jobs.microservice.model.Formation;
 import com.jobs.microservice.model.LettreMotivation;
 import com.jobs.microservice.service.CandidatServiceImpl;
 import com.jobs.microservice.service.LettreMotivationServiceImpl;
 import com.jobs.microservice.web.exceptions.CandidatNotFoundException;
-
 import com.jobs.microservice.web.exceptions.LettreMotivationNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,7 +13,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-@Api( description="API pour les opérations CRUD sur les lettres de motivation .")
+import java.net.URI;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+@Api(description = "API pour les opérations CRUD sur les lettres de motivation .")
 @RestController
 public class LettreMotivationController {
 
@@ -33,7 +31,6 @@ public class LettreMotivationController {
         this.candidatServiceImpl = candidatServiceImpl;
     }
 
-    // Ajouter un candidat
     @ApiOperation(value = "Ajouter une lettre de motivation.")
     @PostMapping(value = "/lettres")
     public ResponseEntity<Void> addLettreMotivation(@RequestBody LettreMotivation lettreMotivation) {

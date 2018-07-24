@@ -1,14 +1,8 @@
 package com.jobs.microservice.web.controller;
 
-import java.net.URI;
-import java.util.List;
-import java.util.Optional;
-
 import com.jobs.microservice.model.Candidat;
-import com.jobs.microservice.model.Formation;
 import com.jobs.microservice.service.CandidatServiceImpl;
 import com.jobs.microservice.web.exceptions.CandidatNotFoundException;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-@Api( description="API pour les opérations CRUD sur les candidats.")
+import java.net.URI;
+import java.util.List;
+import java.util.Optional;
+
+@Api(description = "API pour les opérations CRUD sur les candidats.")
 @RestController
 public class CandidatController {
 

@@ -1,34 +1,28 @@
 package com.jobs.microservice.web.controller;
 
-import com.jobs.microservice.model.Candidat;
 import com.jobs.microservice.model.Cv;
 import com.jobs.microservice.model.Formation;
-import com.jobs.microservice.service.CandidatServiceImpl;
 import com.jobs.microservice.service.CvServiceImpl;
 import com.jobs.microservice.service.FormationServiceImpl;
-import com.jobs.microservice.web.exceptions.CandidatNotFoundException;
 import com.jobs.microservice.web.exceptions.CvNotFoundException;
 import com.jobs.microservice.web.exceptions.FormationNotFoundException;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-@Api( description="API pour les opérations CRUD sur les Formations.")
+@Api(description = "API pour les opérations CRUD sur les Formations.")
 @RestController
 public class FormationController {
 
     private FormationServiceImpl formationServiceImpl;
     private CvServiceImpl cvServiceImpl;
 
+    @Autowired
     public FormationController(FormationServiceImpl formationServiceImpl, CvServiceImpl cvServiceImpl) {
         this.formationServiceImpl = formationServiceImpl;
         this.cvServiceImpl = cvServiceImpl;

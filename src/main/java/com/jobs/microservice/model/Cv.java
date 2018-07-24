@@ -26,7 +26,7 @@ public class Cv implements Serializable {
     @OneToMany(mappedBy = "cv")
     private Set<Formation> formations;
     @OneToMany(mappedBy = "cv")
-    private Set<FormationPro> formationPros;
+    private Set<FormationPro> formationsPro;
     @OneToMany(mappedBy = "cv")
     private Set<Experience> experiences;
     @OneToMany(mappedBy = "cv")
@@ -88,12 +88,12 @@ public class Cv implements Serializable {
         this.formations = formations;
     }
 
-    public Set<FormationPro> getFormationPros() {
-        return formationPros;
+    public Set<FormationPro> getFormationsPro() {
+        return formationsPro;
     }
 
-    public void setFormationPros(Set<FormationPro> formationPros) {
-        this.formationPros = formationPros;
+    public void setFormationsPro(Set<FormationPro> formationsPro) {
+        this.formationsPro = formationsPro;
     }
 
     public Set<Experience> getExperiences() {
