@@ -3,6 +3,7 @@ package com.jobs.microservice.service;
 import com.jobs.microservice.dao.FormationProDao;
 import com.jobs.microservice.model.Cv;
 import com.jobs.microservice.model.FormationPro;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class FormationProServiceImpl implements FormationProService {
 
     private FormationProDao formationProDao;
 
+    @Autowired
     public FormationProServiceImpl(FormationProDao formationProDao) {
         this.formationProDao = formationProDao;
     }

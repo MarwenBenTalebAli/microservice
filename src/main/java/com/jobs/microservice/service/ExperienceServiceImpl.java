@@ -3,6 +3,7 @@ package com.jobs.microservice.service;
 import com.jobs.microservice.dao.ExperienceDao;
 import com.jobs.microservice.model.Cv;
 import com.jobs.microservice.model.Experience;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class ExperienceServiceImpl implements ExperienceService {
 
     private ExperienceDao experienceDao;
 
+    @Autowired
     public ExperienceServiceImpl(ExperienceDao experienceDao) {
         this.experienceDao = experienceDao;
     }
